@@ -1,0 +1,18 @@
+name: Feature proposal
+description: Propose a safe portable LaTeX rendering capability
+title: "[Proposal] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: policy
+    attributes:
+      label: TeX and sanitization policy
+      description: Describe required syntax, fallback behavior, and trust implications.
+    validations:
+      required: true

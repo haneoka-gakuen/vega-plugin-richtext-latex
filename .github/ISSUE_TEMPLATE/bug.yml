@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a reproducible LaTeX or MathML rendering defect
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: "@haneoka/vega-plugin-richtext-latex 0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal LaTeX reproduction
+      description: Include the exact source and whether display mode is enabled.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
