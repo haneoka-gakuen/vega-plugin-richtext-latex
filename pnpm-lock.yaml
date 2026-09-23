@@ -21,6 +21,9 @@ importers:
       '@haneoka/vega':
         specifier: workspace:*
         version: link:.dependencies/vega
+      prettier:
+        specifier: 3.7.4
+        version: 3.7.4
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -39,6 +42,11 @@ packages:
 
   katex@0.18.1:
     resolution: {integrity: sha512-Td8GCYSxDAoMhHOlKmCFMJ/hz5qlAAb71n66Dryw9nfCVfumLo7nhuotbvKom/XPADmrYC3O5QR71EPq4DarJQ==}
+    hasBin: true
+
+  prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
+    engines: {node: '>=14'}
     hasBin: true
 
   typescript@6.0.3:
@@ -60,5 +68,7 @@ snapshots:
   katex@0.18.1:
     dependencies:
       commander: 8.3.0
+
+  prettier@3.7.4: {}
 
   typescript@6.0.3: {}

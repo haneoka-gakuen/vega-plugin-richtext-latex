@@ -1,9 +1,6 @@
 import createDOMPurify from "dompurify";
 import katex from "katex";
-import {
-  defineVegaPlugin,
-  type VegaPlugin,
-} from "@haneoka/vega/plugin";
+import { defineVegaPlugin, type VegaPlugin } from "@haneoka/vega/plugin";
 import {
   VEGA_RICH_TEXT_SERVICE,
   type VegaRichTextRenderRequest,
@@ -40,29 +37,19 @@ const sanitizedMathMl = (
   }) as unknown as DocumentFragment;
 };
 
-export const createLatexRichTextRenderer = (
-  options: LatexRichTextOptions = {},
-): VegaRichTextRenderer =>
+export const createLatexRichTextRenderer = (options: LatexRichTextOptions = {}): VegaRichTextRenderer =>
   Object.freeze({
     id: "haneoka-latex",
     formats: ["latex", "tex"],
     render(request: VegaRichTextRenderRequest) {
       if (request.signal.aborted) {
-        throw request.signal.reason ??
-          new DOMException("LaTeX render aborted", "AbortError");
+        throw request.signal.reason ?? new DOMException("LaTeX render aborted", "AbortError");
       }
-      return sanitizedMathMl(
-        request.document,
-        request.source,
-        request.displayMode ?? false,
-        options,
-      );
+      return sanitizedMathMl(request.document, request.source, request.displayMode ?? false, options);
     },
   });
 
-export const createLatexRichTextPlugin = (
-  options: LatexRichTextOptions = {},
-): VegaPlugin =>
+export const createLatexRichTextPlugin = (options: LatexRichTextOptions = {}): VegaPlugin =>
   defineVegaPlugin({
     manifest: {
       id: "haneoka.vega-richtext-latex",
@@ -78,13 +65,9 @@ export const createLatexRichTextPlugin = (
     setup(context) {
       const service = context.service(VEGA_RICH_TEXT_SERVICE);
       if (!service) {
-        throw new Error(
-          "LaTeX rich text requires haneoka.vega-richtext to be installed first",
-        );
+        throw new Error("LaTeX rich text requires haneoka.vega-richtext to be installed first");
       }
-      const registration = service.register(
-        createLatexRichTextRenderer(options),
-      );
+      const registration = service.register(createLatexRichTextRenderer(options));
       return { dispose: () => registration.dispose() };
     },
   });
