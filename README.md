@@ -16,3 +16,7 @@ service.render(target, {
 
 Install `@haneoka/vega-plugin-richtext` before this plugin. Invalid input remains
 visible as source text and is marked as a render error by the service.
+
+## License
+
+[MPL-2.0](LICENSE).
